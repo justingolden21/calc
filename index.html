@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calc</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style type="text/css">
+	* {
+		margin: 0;
+		padding: 0;
+		font-family: Helvetica, Arial;
+		/*border-radius: 8px;*/
+	}
+	::-moz-selection {
+		background: #9fa8da; /*indigo 200*/
+	}
+	::selection {
+		background: #9fa8da; /*indigo 200*/
+	}
+	body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 100vh;
+		background-color: #1a237e; /*indigo 900*/
+	}
+	.calculator {
+		display: grid;
+		text-align: center;
+		border: 8px solid #006;
+		box-shadow: 8px 8px 0px #003;
+	}
+	.calculator input {
+		grid-column: span 4;
+		height: 100px;
+		border: 0;
+		outline: none;
+		padding: 0px 32px 0px 32px;
+		font-size: 24px;
+		text-align: right;
+	}
+	input::-ms-clear {
+		display: none;
+	}
+	.calculator span {
+		padding: 20px;
+		background: #536dfe; /*indigo A200*/
+		border: 1px solid #3f51b5; /*indigo 500*/
+		color: #1a237e; /*indigo 900*/
+		font-weight: bold;
+		font-size: 20px;
+		cursor: pointer;
+		user-select: none;
+	}
+	.calculator span.clear {
+		grid-column: span 2;
+	}
+	.calculator span:hover {
+		background: #8c9eff; /*indigo A100*/
+	}
+	.calculator span:active {
+		background: #1a237e; /*indigo 900*/
+		color: #e8eaf6; /*indigo 50*/
+	}
+	</style>
+</head>
+<body>
+	<form name="calc" class="calculator">
+		<input autofocus type="text" name="txt" autocomplete="off" autocorrect="off" spellcheck="false">
+		<span class=" clear" onclick="document.calc.txt.value=''">C</span>
+		<span onclick="document.calc.txt.value = document.calc.txt.value.slice(0,-1)">&#x232b;</span>
+		<span onclick="document.calc.txt.value+='/'">/</span>
+		<span onclick="document.calc.txt.value+='7'">7</span>
+		<span onclick="document.calc.txt.value+='8'">8</span>
+		<span onclick="document.calc.txt.value+='9'">9</span>
+		<span onclick="document.calc.txt.value+='*'">*</span>
+		<span onclick="document.calc.txt.value+='4'">4</span>
+		<span onclick="document.calc.txt.value+='5'">5</span>
+		<span onclick="document.calc.txt.value+='6'">6</span>
+		<span onclick="document.calc.txt.value+='-'">-</span>
+		<span onclick="document.calc.txt.value+='1'">1</span>
+		<span onclick="document.calc.txt.value+='2'">2 </span>
+		<span onclick="document.calc.txt.value+='3'">3</span>
+		<span class=" plus" onclick="document.calc.txt.value+='+'">+</span>
+		<span onclick="document.calc.txt.value+='0'">0</span>
+		<span onclick="document.calc.txt.value+='.'">.</span>
+		<span onclick="document.calc.txt.value=Math.sqrt(eval(calc.txt.value) )">&#8730;</span>
+		<span class=" equals" onclick="document.calc.txt.value=eval(calc.txt.value)">=</span>
+	</form>
+	<script>
+		document.getElementsByClassName('calculator')[0].onsubmit = function(evt) {
+			document.getElementsByClassName('equals')[0].click();
+			evt.preventDefault();
+		}
+		document.onkeypress = function(e) {
+			if(e.which == 13)
+				document.getElementsByClassName('equals')[0].click();
+		}
+		document.onclick = function() {
+			document.getElementsByTagName('input')[0].focus();
+		}
+	</script>
+	<!-- inspired by https://youtu.be/R4vFTYjafw0 -->
+</body>
+</html>
