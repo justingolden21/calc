@@ -1,0 +1,9 @@
+Ideas
+Add ^ button, replace string with '**'
+Add 1/x and x^2 buttons
+Add copy button for output
+Add memory functions
+Add history
+Add sin and other math functions
+Look for undefined or NaN or null and replace with "ERROR"
+
