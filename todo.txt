@@ -1,4 +1,5 @@
 Ideas
+Add speak button
 Add ^ button, replace string with '**'
 Add 1/x and x^2 buttons
 Add copy button for output
